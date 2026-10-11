@@ -5,8 +5,8 @@ function (Controller) {
     "use strict";
 
     return Controller.extend("ppplanner.controller.ProductionOrder", {
-        onInit: function () {
-
+        onRefresh: function () {
+            this.getView().getModel().refresh(true);
         }
     });
 });

@@ -2,6 +2,52 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
-        <content />
+        <content>
+            <Table
+                id="productionOrdersTable"
+                items="{/ProductionOrderSet}"
+                noDataText="{i18n>noProductionOrders}"
+                growing="true"
+                growingScrollToLoad="true">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="{i18n>productionOrders}" level="H2" />
+                        <ToolbarSpacer />
+                        <Button
+                            icon="sap-icon://refresh"
+                            tooltip="{i18n>refresh}"
+                            press=".onRefresh" />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="{i18n>order}" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="{i18n>plant}" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="{i18n>material}" />
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>description}" />
+                    </Column>
+                    <Column hAlign="End">
+                        <Text text="{i18n>targetQuantity}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{Aufnr}" />
+                            <Text text="{Werks}" />
+                            <Text text="{Matnr}" />
+                            <Text text="{Maktx}" />
+                            <ObjectNumber number="{Gamng}" unit="{Gmein}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
     </Page>
 </mvc:View>
