@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGW_PP_PROD_ORD_SRV_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ProductionOrder" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Aufnr"/>
+                </Key>
+                <Property Name="Aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Auart" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Order Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Matnr" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Maktx" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Matkl" Type="Edm.String" MaxLength="9" sap:unicode="false" sap:label="Material Group" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="MatklTx" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Material Group Desc." sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Mtart" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Material Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Gamng" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Target Quantity" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Wemng" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Target Quantity" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Femng" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Target Quantity" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Gmein" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Gstrp" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Gltrp" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Gstrs" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Gltrs" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Dispo" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="MRP Controller" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Fevor" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Prodn Supervisor" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Arbpl" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Work Center" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Lgort" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Location" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Charg" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Kstrg" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Cost Object" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PsPspPnr" Type="Edm.String" MaxLength="24" sap:unicode="false" sap:label="WBS Element" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StatSystem" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Logical System" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="StatUser" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Logical System" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="IsTeco" Type="Edm.Boolean" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="IsRel" Type="Edm.Boolean" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="IsCnf" Type="Edm.Boolean" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="IsDlv" Type="Edm.Boolean" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WarnMissingGi" Type="Edm.Boolean" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WarnMissingGr" Type="Edm.Boolean" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WarnConfImbal" Type="Edm.Boolean" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <NavigationProperty Name="GoodsMovementBalanceSet" Relationship="ZGW_PP_PROD_ORD_SRV_SRV.ProductionOrderToGMBalance" FromRole="FromRole_ProductionOrderToGMBalance" ToRole="ToRole_ProductionOrderToGMBalance" sap:label="ProductionOrderToGMBalanceSet"/>
+                <NavigationProperty Name="ConfirmationSummarySet" Relationship="ZGW_PP_PROD_ORD_SRV_SRV.ProductionOrderToConfSummary" FromRole="FromRole_ProductionOrderToConfSummary" ToRole="ToRole_ProductionOrderToConfSummary"/>
+            </EntityType>
+            <EntityType Name="GoodsMovementBalance" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Aufnr"/>
+                </Key>
+                <Property Name="Aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="GmCategory" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="GM Catergory" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Matnr" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Meins" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Charg" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Lgort" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Location" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Maktx" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Mtart" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Material Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Matkl" Type="Edm.String" MaxLength="9" sap:unicode="false" sap:label="Material Group" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Bwart" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Movement Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="MengePos" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MengeNeg" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MengeNet" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BudatLast" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Posting Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MblnrLast" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Material Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UomWarn" Type="Edm.Boolean" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ConfirmationSummary" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Aufnr"/>
+                    <PropertyRef Name="Vornr"/>
+                    <PropertyRef Name="Rueck"/>
+                    <PropertyRef Name="Rmzhl"/>
+                </Key>
+                <Property Name="Aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Vornr" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Activity" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Rueck" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Confirmation" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Rmzhl" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Counter" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Ltxa1" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Op. Short Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Arbpl" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Work Center" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Enmng" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Withdrawal Qty" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Gmnga" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Yield in Order Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Xmnga" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Confirmed Scrap" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Gmein" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Ile01" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Unit/activity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Ism01" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Acty to Confirm" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Budat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Posting Date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Stokz" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Doc. Reversed" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="IsReversed" Type="Edm.Boolean" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="EnmngNet" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Withdrawal Qty" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="TecoResult" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Aufnr"/>
+                </Key>
+                <Property Name="Aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Success" Type="Edm.Boolean" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MsgType" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Message type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MsgText" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="Message Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MsgId" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Message ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MsgNo" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Message Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MsgV1" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MsgV2" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="ProductionOrderToConfSummary" sap:content-version="1" sap:label="ProductionOrderToConfSummarySet">
+                <End Type="ZGW_PP_PROD_ORD_SRV_SRV.ProductionOrder" Multiplicity="1" Role="FromRole_ProductionOrderToConfSummary"/>
+                <End Type="ZGW_PP_PROD_ORD_SRV_SRV.ConfirmationSummary" Multiplicity="*" Role="ToRole_ProductionOrderToConfSummary"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ProductionOrderToConfSummary">
+                        <PropertyRef Name="Aufnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ProductionOrderToConfSummary">
+                        <PropertyRef Name="Aufnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ProductionOrderToGMBalance" sap:content-version="1" sap:label="ProductionOrderToGMBalanceSet">
+                <End Type="ZGW_PP_PROD_ORD_SRV_SRV.ProductionOrder" Multiplicity="1" Role="FromRole_ProductionOrderToGMBalance"/>
+                <End Type="ZGW_PP_PROD_ORD_SRV_SRV.GoodsMovementBalance" Multiplicity="*" Role="ToRole_ProductionOrderToGMBalance"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ProductionOrderToGMBalance">
+                        <PropertyRef Name="Aufnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ProductionOrderToGMBalance">
+                        <PropertyRef Name="Aufnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZGW_PP_PROD_ORD_SRV_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ProductionOrderSet" EntityType="ZGW_PP_PROD_ORD_SRV_SRV.ProductionOrder" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="GoodsMovementBalanceSet" EntityType="ZGW_PP_PROD_ORD_SRV_SRV.GoodsMovementBalance" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ConfirmationSummarySet" EntityType="ZGW_PP_PROD_ORD_SRV_SRV.ConfirmationSummary" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="TecoResultSet" EntityType="ZGW_PP_PROD_ORD_SRV_SRV.TecoResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="ProductionOrderToConfSummarySet" Association="ZGW_PP_PROD_ORD_SRV_SRV.ProductionOrderToConfSummary" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ProductionOrderSet" Role="FromRole_ProductionOrderToConfSummary"/>
+                    <End EntitySet="ConfirmationSummarySet" Role="ToRole_ProductionOrderToConfSummary"/>
+                </AssociationSet>
+                <AssociationSet Name="ProductionOrderToGMBalanceSet" Association="ZGW_PP_PROD_ORD_SRV_SRV.ProductionOrderToGMBalance" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ProductionOrderSet" Role="FromRole_ProductionOrderToGMBalance"/>
+                    <End EntitySet="GoodsMovementBalanceSet" Role="ToRole_ProductionOrderToGMBalance"/>
+                </AssociationSet>
+                <FunctionImport Name="SetTechnicalComplete" ReturnType="ZGW_PP_PROD_ORD_SRV_SRV.TecoResult" EntitySet="TecoResultSet" m:HttpMethod="POST" sap:label="Set Technical Complete">
+                    <Parameter Name="AufnrList" Type="Edm.String" Mode="In" MaxLength="2000"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <atom:link rel="self" href="https://vhapzds4ci.sap.almutahida.com.iq:44300/sap/opu/odata/sap/ZGW_PP_PROD_ORD_SRV_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://vhapzds4ci.sap.almutahida.com.iq:44300/sap/opu/odata/sap/ZGW_PP_PROD_ORD_SRV_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
