@@ -18,6 +18,7 @@ server:
         backend:
           - path: /sap
             url: http://vhapzds4ci.sap.almutahida.com.iq:44300
+            client: "100"
             destination: testing_100_CLONING
     - name: fiori-tools-appreload
       afterMiddleware: compression
