@@ -3,10 +3,16 @@
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
         <content>
+            <MessageStrip
+                type="Error"
+                showIcon="true"
+                showCloseButton="false"
+                visible="{serviceState>/serviceError}"
+                text="{i18n>serviceUnavailable}" />
             <Table
                 id="productionOrdersTable"
                 items="{/ProductionOrderSet}"
-                noDataText="{i18n>noProductionOrders}"
+                noDataText="{= ${serviceState>/serviceError} ? ${i18n>serviceUnavailable} : ${i18n>noProductionOrders} }"
                 growing="true"
                 growingScrollToLoad="true">
                 <headerToolbar>

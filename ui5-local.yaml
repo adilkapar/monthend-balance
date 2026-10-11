@@ -28,10 +28,10 @@ server:
     - name: fiori-tools-proxy
       afterMiddleware: compression
       configuration:
-        ignoreCertErrors: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ignoreCertErrors: true # Local development only: this SAP endpoint uses a self-signed certificate.
         backend:
           - path: /sap
-            url: http://vhapzds4ci.sap.almutahida.com.iq:44300
+            url: https://vhapzds4ci.sap.almutahida.com.iq:44300
             client: "100"
             destination: testing_100_CLONING
     - name: sap-fe-mockserver
