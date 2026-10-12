@@ -1,1 +1,47 @@
 /* Enter your custom styles here */
+
+/* --- Status Icons --- */
+.statusIconActive {
+    color: #107E3E !important; /* SAP positive / green */
+}
+
+.statusIconInactive {
+    color: #C0C0C0 !important; /* grey / inactive */
+}
+
+/* --- Warning Icons --- */
+.warningIconActive {
+    color: #E78C07 !important; /* SAP critical / orange */
+}
+
+.warningIconError {
+    color: #BB0000 !important; /* SAP negative / red */
+}
+
+/* --- Filter Panel --- */
+.ppFilterPanel .sapMPanelContent {
+    padding: 0.5rem 1rem;
+}
+
+.ppFilterPanel .sapUiFormCL {
+    padding-bottom: 0;
+}
+
+.ppFilterToolbar {
+    padding: 0 1rem 0.5rem 1rem;
+}
+
+/* --- Status HBox in table cells --- */
+.statusCell .sapMFlexItem {
+    margin-right: 0.25rem;
+}
+
+/* --- Detail page object header --- */
+.ppDetailHeader {
+    padding-bottom: 0;
+}
+
+/* --- Goods Movement / Confirmation sub-tables --- */
+.ppSubTable {
+    margin-top: 0.5rem;
+}

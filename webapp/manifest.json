@@ -49,7 +49,9 @@
       "minUI5Version": "1.114.0",
       "libs": {
         "sap.m": {},
-        "sap.ui.core": {}
+        "sap.ui.core": {},
+        "sap.ui.layout": {},
+        "sap.ui.unified": {}
       }
     },
     "contentDensities": {
@@ -93,6 +95,13 @@
           "target": [
             "TargetProductionOrder"
           ]
+        },
+        {
+          "name": "RouteOrderDetail",
+          "pattern": "OrderDetail/{orderNumber}",
+          "target": [
+            "TargetOrderDetail"
+          ]
         }
       ],
       "targets": {
@@ -102,6 +111,13 @@
           "clearControlAggregation": false,
           "viewId": "ProductionOrder",
           "viewName": "ProductionOrder"
+        },
+        "TargetOrderDetail": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "OrderDetail",
+          "viewName": "OrderDetail"
         }
       }
     },

@@ -1,55 +1,235 @@
 <mvc:View controllerName="ppplanner.controller.ProductionOrder"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:unified="sap.ui.unified">
     <Page id="page" title="{i18n>title}">
         <content>
             <MessageStrip
+                id="serviceErrorStrip"
                 type="Error"
                 showIcon="true"
                 showCloseButton="false"
                 visible="{serviceState>/serviceError}"
                 text="{i18n>serviceUnavailable}" />
+
+            <!-- ==================== FILTER BAR ==================== -->
+            <Panel id="filterPanel" headerText="" expandable="true" expanded="true" class="ppFilterPanel">
+                <headerToolbar>
+                    <Toolbar id="filterToolbar">
+                        <Title id="filterTitle" text="Filters" level="H4" />
+                        <ToolbarSpacer id="filterToolbarSpacer" />
+                        <Button id="filterResetBtn" text="{i18n>resetFilters}" icon="sap-icon://clear-filter" press=".onFilterBarReset" type="Transparent" />
+                        <Button id="filterGoBtn" text="{i18n>go}" icon="sap-icon://search" press=".onSearch" type="Emphasized" />
+                    </Toolbar>
+                </headerToolbar>
+                <content>
+                    <form:SimpleForm id="filterForm"
+                        editable="true"
+                        layout="ColumnLayout"
+                        columnsM="2"
+                        columnsL="3"
+                        columnsXL="4"
+                        labelSpanM="12"
+                        labelSpanL="12"
+                        labelSpanXL="12">
+                        <Label id="lblFilterAufnr" text="{i18n>order}" />
+                        <Input id="filterAufnr" placeholder="{i18n>order}" />
+                        <Label id="lblFilterAuart" text="{i18n>orderType}" />
+                        <Input id="filterAuart" placeholder="{i18n>orderType}" />
+                        <Label id="lblFilterWerks" text="{i18n>plant}" />
+                        <Input id="filterWerks" placeholder="{i18n>plant}" />
+                        <Label id="lblFilterMatnr" text="{i18n>material}" />
+                        <Input id="filterMatnr" placeholder="{i18n>material}" />
+                        <Label id="lblFilterMatkl" text="{i18n>materialGroup}" />
+                        <Input id="filterMatkl" placeholder="{i18n>materialGroup}" />
+                        <Label id="lblFilterMtart" text="{i18n>materialType}" />
+                        <Input id="filterMtart" placeholder="{i18n>materialType}" />
+                        <Label id="lblFilterDispo" text="{i18n>mrpController}" />
+                        <Input id="filterDispo" placeholder="{i18n>mrpController}" />
+                        <Label id="lblFilterFevor" text="{i18n>supervisor}" />
+                        <Input id="filterFevor" placeholder="{i18n>supervisor}" />
+                        <Label id="lblFilterArbpl" text="{i18n>workCenter}" />
+                        <Input id="filterArbpl" placeholder="{i18n>workCenter}" />
+                        <Label id="lblFilterLgort" text="{i18n>storageLocation}" />
+                        <Input id="filterLgort" placeholder="{i18n>storageLocation}" />
+                        <Label id="lblFilterCharg" text="{i18n>batch}" />
+                        <Input id="filterCharg" placeholder="{i18n>batch}" />
+                        <Label id="lblFilterPsPspPnr" text="{i18n>wbsElement}" />
+                        <Input id="filterPsPspPnr" placeholder="{i18n>wbsElement}" />
+                        <Label id="lblFilterGstrp" text="{i18n>basicStartDate}" />
+                        <DateRangeSelection id="filterGstrp" />
+                        <Label id="lblFilterGltrp" text="{i18n>basicFinishDate}" />
+                        <DateRangeSelection id="filterGltrp" />
+                        <Label id="lblFilterGstrs" text="{i18n>scheduledStart}" />
+                        <DateRangeSelection id="filterGstrs" />
+                        <Label id="lblFilterGltrs" text="{i18n>scheduledFinish}" />
+                        <DateRangeSelection id="filterGltrs" />
+                        <Label id="lblFilterIsTeco" text="{i18n>techComplete}" />
+                        <Select id="filterIsTeco">
+                            <core:Item id="itemTecoAll" key="" text="" />
+                            <core:Item id="itemTecoYes" key="true" text="{i18n>statusYes}" />
+                            <core:Item id="itemTecoNo" key="false" text="{i18n>statusNo}" />
+                        </Select>
+                        <Label id="lblFilterIsRel" text="{i18n>released}" />
+                        <Select id="filterIsRel">
+                            <core:Item id="itemRelAll" key="" text="" />
+                            <core:Item id="itemRelYes" key="true" text="{i18n>statusYes}" />
+                            <core:Item id="itemRelNo" key="false" text="{i18n>statusNo}" />
+                        </Select>
+                        <Label id="lblFilterIsCnf" text="{i18n>confirmed}" />
+                        <Select id="filterIsCnf">
+                            <core:Item id="itemCnfAll" key="" text="" />
+                            <core:Item id="itemCnfYes" key="true" text="{i18n>statusYes}" />
+                            <core:Item id="itemCnfNo" key="false" text="{i18n>statusNo}" />
+                        </Select>
+                        <Label id="lblFilterIsDlv" text="{i18n>delivered}" />
+                        <Select id="filterIsDlv">
+                            <core:Item id="itemDlvAll" key="" text="" />
+                            <core:Item id="itemDlvYes" key="true" text="{i18n>statusYes}" />
+                            <core:Item id="itemDlvNo" key="false" text="{i18n>statusNo}" />
+                        </Select>
+                        <Label id="lblFilterWarnGi" text="{i18n>missingGI}" />
+                        <Select id="filterWarnMissingGi">
+                            <core:Item id="itemWarnGiAll" key="" text="" />
+                            <core:Item id="itemWarnGiYes" key="true" text="{i18n>statusYes}" />
+                            <core:Item id="itemWarnGiNo" key="false" text="{i18n>statusNo}" />
+                        </Select>
+                        <Label id="lblFilterWarnGr" text="{i18n>missingGR}" />
+                        <Select id="filterWarnMissingGr">
+                            <core:Item id="itemWarnGrAll" key="" text="" />
+                            <core:Item id="itemWarnGrYes" key="true" text="{i18n>statusYes}" />
+                            <core:Item id="itemWarnGrNo" key="false" text="{i18n>statusNo}" />
+                        </Select>
+                        <Label id="lblFilterWarnImbal" text="{i18n>confImbalance}" />
+                        <Select id="filterWarnConfImbal">
+                            <core:Item id="itemWarnImbalAll" key="" text="" />
+                            <core:Item id="itemWarnImbalYes" key="true" text="{i18n>statusYes}" />
+                            <core:Item id="itemWarnImbalNo" key="false" text="{i18n>statusNo}" />
+                        </Select>
+                    </form:SimpleForm>
+                </content>
+            </Panel>
+
+            <!-- ==================== DATA TABLE ==================== -->
             <Table
                 id="productionOrdersTable"
-                items="{/ProductionOrderSet}"
                 noDataText="{= ${serviceState>/serviceError} ? ${i18n>serviceUnavailable} : ${i18n>noProductionOrders} }"
                 growing="true"
-                growingScrollToLoad="true">
+                growingThreshold="50"
+                growingScrollToLoad="true"
+                mode="MultiSelect"
+                includeItemInSelection="true">
                 <headerToolbar>
-                    <OverflowToolbar>
-                        <Title text="{i18n>productionOrders}" level="H2" />
-                        <ToolbarSpacer />
+                    <OverflowToolbar id="tableToolbar">
+                        <Title id="tableTitle" text="{i18n>productionOrders}" level="H2" />
+                        <ToolbarSpacer id="tableToolbarSpacer" />
                         <Button
+                            id="tecoButton"
+                            text="{i18n>setTeco}"
+                            icon="sap-icon://complete"
+                            type="Attention"
+                            press=".onSetTeco" />
+                        <Button
+                            id="refreshButton"
                             icon="sap-icon://refresh"
                             tooltip="{i18n>refresh}"
                             press=".onRefresh" />
                     </OverflowToolbar>
                 </headerToolbar>
                 <columns>
-                    <Column>
-                        <Text text="{i18n>order}" />
+                    <Column id="colOrder" width="8rem">
+                        <Text id="colOrderTxt" text="{i18n>order}" />
                     </Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true">
-                        <Text text="{i18n>plant}" />
+                    <Column id="colOrderType" width="5rem" minScreenWidth="Tablet" demandPopin="true">
+                        <Text id="colOrderTypeTxt" text="{i18n>orderType}" />
                     </Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true">
-                        <Text text="{i18n>material}" />
+                    <Column id="colPlant" width="5rem" minScreenWidth="Tablet" demandPopin="true">
+                        <Text id="colPlantTxt" text="{i18n>plant}" />
                     </Column>
-                    <Column>
-                        <Text text="{i18n>description}" />
+                    <Column id="colMaterial" minScreenWidth="Tablet" demandPopin="true">
+                        <Text id="colMaterialTxt" text="{i18n>material}" />
                     </Column>
-                    <Column hAlign="End">
-                        <Text text="{i18n>targetQuantity}" />
+                    <Column id="colDescription" minScreenWidth="Desktop" demandPopin="true">
+                        <Text id="colDescriptionTxt" text="{i18n>description}" />
+                    </Column>
+                    <Column id="colTargetQty" hAlign="End" width="8rem">
+                        <Text id="colTargetQtyTxt" text="{i18n>targetQuantity}" />
+                    </Column>
+                    <Column id="colGrQty" hAlign="End" width="8rem" minScreenWidth="Tablet" demandPopin="true">
+                        <Text id="colGrQtyTxt" text="{i18n>grQuantity}" />
+                    </Column>
+                    <Column id="colShortageQty" hAlign="End" width="8rem" minScreenWidth="Desktop" demandPopin="true">
+                        <Text id="colShortageQtyTxt" text="{i18n>shortageQuantity}" />
+                    </Column>
+                    <Column id="colBasicStart" width="7rem" minScreenWidth="Desktop" demandPopin="true">
+                        <Text id="colBasicStartTxt" text="{i18n>basicStartDate}" />
+                    </Column>
+                    <Column id="colBasicFinish" width="7rem" minScreenWidth="Desktop" demandPopin="true">
+                        <Text id="colBasicFinishTxt" text="{i18n>basicFinishDate}" />
+                    </Column>
+                    <Column id="colMrpCtrl" width="5rem" minScreenWidth="Desktop" demandPopin="true">
+                        <Text id="colMrpCtrlTxt" text="{i18n>mrpController}" />
+                    </Column>
+                    <Column id="colSupervisor" width="5rem" minScreenWidth="Desktop" demandPopin="true">
+                        <Text id="colSupervisorTxt" text="{i18n>supervisor}" />
+                    </Column>
+                    <Column id="colWorkCenter" width="6rem" minScreenWidth="Desktop" demandPopin="true">
+                        <Text id="colWorkCenterTxt" text="{i18n>workCenter}" />
+                    </Column>
+                    <Column id="colStatus" width="8rem" minScreenWidth="Desktop" demandPopin="true">
+                        <Text id="colStatusTxt" text="{i18n>status}" />
+                    </Column>
+                    <Column id="colWarnings" width="7rem" minScreenWidth="Desktop" demandPopin="true">
+                        <Text id="colWarningsTxt" text="{i18n>warnings}" />
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem>
+                    <ColumnListItem id="orderListItem" type="Navigation" press=".onRowPress">
                         <cells>
-                            <Text text="{Aufnr}" />
-                            <Text text="{Werks}" />
-                            <Text text="{Matnr}" />
-                            <Text text="{Maktx}" />
-                            <ObjectNumber number="{Gamng}" unit="{Gmein}" />
+                            <Text id="cellAufnr" text="{Aufnr}" />
+                            <Text id="cellAuart" text="{Auart}" />
+                            <Text id="cellWerks" text="{Werks}" />
+                            <Text id="cellMatnr" text="{Matnr}" />
+                            <Text id="cellMaktx" text="{Maktx}" />
+                            <ObjectNumber id="cellGamng" number="{Gamng}" unit="{Gmein}" />
+                            <ObjectNumber id="cellWemng" number="{Wemng}" unit="{Gmein}" />
+                            <ObjectNumber id="cellFemng" number="{Femng}" unit="{Gmein}" />
+                            <Text id="cellGstrp" text="{
+                                path: 'Gstrp',
+                                type: 'sap.ui.model.type.Date',
+                                formatOptions: { style: 'medium' }
+                            }" />
+                            <Text id="cellGltrp" text="{
+                                path: 'Gltrp',
+                                type: 'sap.ui.model.type.Date',
+                                formatOptions: { style: 'medium' }
+                            }" />
+                            <Text id="cellDispo" text="{Dispo}" />
+                            <Text id="cellFevor" text="{Fevor}" />
+                            <Text id="cellArbpl" text="{Arbpl}" />
+                            <!-- Status Icons -->
+                            <HBox id="statusIconsBox" class="statusCell">
+                                <core:Icon id="iconIsRel" src="sap-icon://accept" tooltip="{i18n>released}"
+                                    class="{= ${IsRel} ? 'statusIconActive' : 'statusIconInactive' }" size="1rem" />
+                                <core:Icon id="iconIsCnf" src="sap-icon://inspection" tooltip="{i18n>confirmed}"
+                                    class="{= ${IsCnf} ? 'statusIconActive' : 'statusIconInactive' }" size="1rem" />
+                                <core:Icon id="iconIsDlv" src="sap-icon://shipping-status" tooltip="{i18n>delivered}"
+                                    class="{= ${IsDlv} ? 'statusIconActive' : 'statusIconInactive' }" size="1rem" />
+                                <core:Icon id="iconIsTeco" src="sap-icon://complete" tooltip="{i18n>techComplete}"
+                                    class="{= ${IsTeco} ? 'statusIconActive' : 'statusIconInactive' }" size="1rem" />
+                            </HBox>
+                            <!-- Warning Icons -->
+                            <HBox id="warningIconsBox" class="statusCell">
+                                <core:Icon id="iconWarnGi" src="sap-icon://warning2" tooltip="{i18n>missingGI}"
+                                    visible="{WarnMissingGi}" class="warningIconActive" size="1rem" />
+                                <core:Icon id="iconWarnGr" src="sap-icon://warning2" tooltip="{i18n>missingGR}"
+                                    visible="{WarnMissingGr}" class="warningIconError" size="1rem" />
+                                <core:Icon id="iconWarnImbal" src="sap-icon://alert" tooltip="{i18n>confImbalance}"
+                                    visible="{WarnConfImbal}" class="warningIconActive" size="1rem" />
+                            </HBox>
                         </cells>
                     </ColumnListItem>
                 </items>
