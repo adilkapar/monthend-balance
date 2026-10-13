@@ -116,12 +116,13 @@
             <!-- ==================== DATA TABLE ==================== -->
             <Table
                 id="productionOrdersTable"
+                items="{ path: '/ProductionOrderSet' }"
                 noDataText="{= ${serviceState>/serviceError} ? ${i18n>serviceUnavailable} : ${i18n>noProductionOrders} }"
                 growing="true"
                 growingThreshold="50"
                 growingScrollToLoad="true"
                 mode="MultiSelect"
-                includeItemInSelection="true">
+                includeItemInSelection="false">
                 <headerToolbar>
                     <OverflowToolbar id="tableToolbar">
                         <Title id="tableTitle" text="{i18n>productionOrders}" level="H2" />

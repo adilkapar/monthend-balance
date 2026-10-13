@@ -18,7 +18,20 @@ function (Controller, Filter, FilterOperator, MessageBox, MessageToast) {
             } else {
                 oComponent.getModel("serviceState").setProperty("/serviceError", true);
             }
-            // Table starts empty — user must press Go to fetch data
+            // Table starts empty — suspend the items binding until user presses Go
+            var oTable = this.byId("productionOrdersTable");
+            var fnSuspend = function () {
+                var oBinding = oTable.getBinding("items");
+                if (oBinding) {
+                    oBinding.suspend();
+                }
+            };
+            // Binding may already be created or may come after model propagation
+            if (oTable.getBinding("items")) {
+                oTable.getBinding("items").suspend();
+            } else {
+                oTable.attachEventOnce("updateFinished", fnSuspend);
+            }
         },
 
         /**
@@ -104,6 +117,7 @@ function (Controller, Filter, FilterOperator, MessageBox, MessageToast) {
 
         /**
          * Applies filters to the table binding.
+         * On first search the binding is resumed; on subsequent searches filters are reapplied.
          * @param {sap.ui.model.Filter[]} aFilters The filters to apply
          */
         _applyFilters: function (aFilters) {
@@ -111,63 +125,13 @@ function (Controller, Filter, FilterOperator, MessageBox, MessageToast) {
             var oBinding = oTable.getBinding("items");
 
             if (oBinding) {
-                // Table already bound — just reapply filters
-                oBinding.filter(aFilters);
-            } else {
-                // First search — use the XML-declared template via bindItems
-                var oBindingInfo = oTable.getBindingInfo("items");
-                if (oBindingInfo && oBindingInfo.template) {
-                    oTable.bindItems({
-                        path: "/ProductionOrderSet",
-                        template: oBindingInfo.template,
-                        filters: aFilters
-                    });
+                if (oBinding.isSuspended()) {
+                    oBinding.filter(aFilters);
+                    oBinding.resume();
                 } else {
-                    // Fallback: bind directly, items template from XML aggregation
-                    oTable.bindItems({
-                        path: "/ProductionOrderSet",
-                        template: this._createListItemTemplate(),
-                        filters: aFilters
-                    });
+                    oBinding.filter(aFilters);
                 }
             }
-        },
-
-        /**
-         * Creates a ColumnListItem template programmatically as fallback.
-         * @returns {sap.m.ColumnListItem} The list item template
-         */
-        _createListItemTemplate: function () {
-            return new sap.m.ColumnListItem({
-                type: "Navigation",
-                press: [this.onRowPress, this],
-                cells: [
-                    new sap.m.Text({ text: "{Aufnr}" }),
-                    new sap.m.Text({ text: "{Auart}" }),
-                    new sap.m.Text({ text: "{Werks}" }),
-                    new sap.m.Text({ text: "{Matnr}" }),
-                    new sap.m.Text({ text: "{Maktx}" }),
-                    new sap.m.ObjectNumber({ number: "{Gamng}", unit: "{Gmein}" }),
-                    new sap.m.ObjectNumber({ number: "{Wemng}", unit: "{Gmein}" }),
-                    new sap.m.ObjectNumber({ number: "{Femng}", unit: "{Gmein}" }),
-                    new sap.m.Text({ text: { path: "Gstrp", type: "sap.ui.model.type.Date", formatOptions: { style: "medium" } } }),
-                    new sap.m.Text({ text: { path: "Gltrp", type: "sap.ui.model.type.Date", formatOptions: { style: "medium" } } }),
-                    new sap.m.Text({ text: "{Dispo}" }),
-                    new sap.m.Text({ text: "{Fevor}" }),
-                    new sap.m.Text({ text: "{Arbpl}" }),
-                    new sap.m.HBox({ items: [
-                        new sap.ui.core.Icon({ src: "sap-icon://accept", tooltip: "{i18n>released}", size: "1rem" }),
-                        new sap.ui.core.Icon({ src: "sap-icon://inspection", tooltip: "{i18n>confirmed}", size: "1rem" }),
-                        new sap.ui.core.Icon({ src: "sap-icon://shipping-status", tooltip: "{i18n>delivered}", size: "1rem" }),
-                        new sap.ui.core.Icon({ src: "sap-icon://complete", tooltip: "{i18n>techComplete}", size: "1rem" })
-                    ] }),
-                    new sap.m.HBox({ items: [
-                        new sap.ui.core.Icon({ src: "sap-icon://warning2", tooltip: "{i18n>missingGI}", visible: "{WarnMissingGi}", size: "1rem" }),
-                        new sap.ui.core.Icon({ src: "sap-icon://warning2", tooltip: "{i18n>missingGR}", visible: "{WarnMissingGr}", size: "1rem" }),
-                        new sap.ui.core.Icon({ src: "sap-icon://alert", tooltip: "{i18n>confImbalance}", visible: "{WarnConfImbal}", size: "1rem" })
-                    ] })
-                ]
-            });
         },
 
         /**

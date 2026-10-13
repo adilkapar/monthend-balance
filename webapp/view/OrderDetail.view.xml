@@ -31,146 +31,167 @@
                         state="{= ${IsTeco} ? 'Success' : 'None' }" />
                 </statuses>
             </ObjectHeader>
-            <!-- Icon Tab Bar with 3 tabs -->
-            <IconTabBar id="detailTabs" expandable="false" stretchContentHeight="true">
-                <items>
-                    <!-- TAB 1: Order Information -->
-                    <IconTabFilter id="tabInfo" text="{i18n>orderInfo}" icon="sap-icon://detail-view" key="info">
-                        <form:SimpleForm id="orderInfoForm" editable="false" layout="ColumnLayout"
-                            columnsM="1" columnsL="2" columnsXL="2">
-                            <core:Title id="titleGeneral" text="{i18n>generalInfo}" />
-                            <Label id="lblOrder" text="{i18n>order}" />
-                            <Text id="txtOrder" text="{Aufnr}" />
-                            <Label id="lblOrderType" text="{i18n>orderType}" />
-                            <Text id="txtOrderType" text="{Auart}" />
-                            <Label id="lblPlant" text="{i18n>plant}" />
-                            <Text id="txtPlant" text="{Werks}" />
-                            <Label id="lblMaterial" text="{i18n>material}" />
-                            <Text id="txtMaterial" text="{Matnr}" />
-                            <Label id="lblDescription" text="{i18n>description}" />
-                            <Text id="txtDescription" text="{Maktx}" />
-                            <Label id="lblMaterialGroup" text="{i18n>materialGroup}" />
-                            <Text id="txtMaterialGroup" text="{Matkl} - {MatklTx}" />
-                            <Label id="lblMaterialType" text="{i18n>materialType}" />
-                            <Text id="txtMaterialType" text="{Mtart}" />
-                            <Label id="lblMrpController" text="{i18n>mrpController}" />
-                            <Text id="txtMrpController" text="{Dispo}" />
-                            <Label id="lblSupervisor" text="{i18n>supervisor}" />
-                            <Text id="txtSupervisor" text="{Fevor}" />
-                            <Label id="lblWorkCenter" text="{i18n>workCenter}" />
-                            <Text id="txtWorkCenter" text="{Arbpl}" />
-                            <Label id="lblStorageLocation" text="{i18n>storageLocation}" />
-                            <Text id="txtStorageLocation" text="{Lgort}" />
-                            <Label id="lblBatch" text="{i18n>batch}" />
-                            <Text id="txtBatch" text="{Charg}" />
-                            <Label id="lblCostObject" text="{i18n>costObject}" />
-                            <Text id="txtCostObject" text="{Kstrg}" />
-                            <Label id="lblWbsElement" text="{i18n>wbsElement}" />
-                            <Text id="txtWbsElement" text="{PsPspPnr}" />
 
-                            <core:Title id="titleDates" text="{i18n>dates}" />
-                            <Label id="lblBasicStart" text="{i18n>basicStartDate}" />
-                            <Text id="txtBasicStart" text="{ path: 'Gstrp', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
-                            <Label id="lblBasicFinish" text="{i18n>basicFinishDate}" />
-                            <Text id="txtBasicFinish" text="{ path: 'Gltrp', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
-                            <Label id="lblSchedStart" text="{i18n>scheduledStart}" />
-                            <Text id="txtSchedStart" text="{ path: 'Gstrs', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
-                            <Label id="lblSchedFinish" text="{i18n>scheduledFinish}" />
-                            <Text id="txtSchedFinish" text="{ path: 'Gltrs', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
+            <!-- SECTION 1: Order Information -->
+            <Panel id="panelOrderInfo" expandable="true" expanded="true" class="sapUiSmallMarginTop">
+                <headerToolbar>
+                    <Toolbar id="toolbarOrderInfo">
+                        <core:Icon id="iconOrderInfo" src="sap-icon://detail-view" class="sapUiSmallMarginEnd" />
+                        <Title id="titlePanelOrderInfo" text="{i18n>orderInfo}" level="H4" />
+                    </Toolbar>
+                </headerToolbar>
+                <content>
+                    <form:SimpleForm id="orderInfoForm" editable="false" layout="ColumnLayout"
+                        columnsM="1" columnsL="2" columnsXL="2">
+                        <core:Title id="titleGeneral" text="{i18n>generalInfo}" />
+                        <Label id="lblOrder" text="{i18n>order}" />
+                        <Text id="txtOrder" text="{Aufnr}" />
+                        <Label id="lblOrderType" text="{i18n>orderType}" />
+                        <Text id="txtOrderType" text="{Auart}" />
+                        <Label id="lblPlant" text="{i18n>plant}" />
+                        <Text id="txtPlant" text="{Werks}" />
+                        <Label id="lblMaterial" text="{i18n>material}" />
+                        <Text id="txtMaterial" text="{Matnr}" />
+                        <Label id="lblDescription" text="{i18n>description}" />
+                        <Text id="txtDescription" text="{Maktx}" />
+                        <Label id="lblMaterialGroup" text="{i18n>materialGroup}" />
+                        <Text id="txtMaterialGroup" text="{Matkl} - {MatklTx}" />
+                        <Label id="lblMaterialType" text="{i18n>materialType}" />
+                        <Text id="txtMaterialType" text="{Mtart}" />
+                        <Label id="lblMrpController" text="{i18n>mrpController}" />
+                        <Text id="txtMrpController" text="{Dispo}" />
+                        <Label id="lblSupervisor" text="{i18n>supervisor}" />
+                        <Text id="txtSupervisor" text="{Fevor}" />
+                        <Label id="lblWorkCenter" text="{i18n>workCenter}" />
+                        <Text id="txtWorkCenter" text="{Arbpl}" />
+                        <Label id="lblStorageLocation" text="{i18n>storageLocation}" />
+                        <Text id="txtStorageLocation" text="{Lgort}" />
+                        <Label id="lblBatch" text="{i18n>batch}" />
+                        <Text id="txtBatch" text="{Charg}" />
+                        <Label id="lblCostObject" text="{i18n>costObject}" />
+                        <Text id="txtCostObject" text="{Kstrg}" />
+                        <Label id="lblWbsElement" text="{i18n>wbsElement}" />
+                        <Text id="txtWbsElement" text="{PsPspPnr}" />
 
-                            <core:Title id="titleQuantities" text="{i18n>quantities}" />
-                            <Label id="lblTargetQty" text="{i18n>targetQuantity}" />
-                            <Text id="txtTargetQty" text="{Gamng} {Gmein}" />
-                            <Label id="lblGrQty" text="{i18n>grQuantity}" />
-                            <Text id="txtGrQty" text="{Wemng} {Gmein}" />
-                            <Label id="lblShortageQty" text="{i18n>shortageQuantity}" />
-                            <Text id="txtShortageQty" text="{Femng} {Gmein}" />
+                        <core:Title id="titleDates" text="{i18n>dates}" />
+                        <Label id="lblBasicStart" text="{i18n>basicStartDate}" />
+                        <Text id="txtBasicStart" text="{ path: 'Gstrp', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
+                        <Label id="lblBasicFinish" text="{i18n>basicFinishDate}" />
+                        <Text id="txtBasicFinish" text="{ path: 'Gltrp', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
+                        <Label id="lblSchedStart" text="{i18n>scheduledStart}" />
+                        <Text id="txtSchedStart" text="{ path: 'Gstrs', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
+                        <Label id="lblSchedFinish" text="{i18n>scheduledFinish}" />
+                        <Text id="txtSchedFinish" text="{ path: 'Gltrs', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
 
-                            <core:Title id="titleAdditional" text="{i18n>additionalInfo}" />
-                            <Label id="lblStatSystem" text="{i18n>statSystem}" />
-                            <Text id="txtStatSystem" text="{StatSystem}" />
-                            <Label id="lblStatUser" text="{i18n>statUser}" />
-                            <Text id="txtStatUser" text="{StatUser}" />
-                        </form:SimpleForm>
-                    </IconTabFilter>
+                        <core:Title id="titleQuantities" text="{i18n>quantities}" />
+                        <Label id="lblTargetQty" text="{i18n>targetQuantity}" />
+                        <Text id="txtTargetQty" text="{Gamng} {Gmein}" />
+                        <Label id="lblGrQty" text="{i18n>grQuantity}" />
+                        <Text id="txtGrQty" text="{Wemng} {Gmein}" />
+                        <Label id="lblShortageQty" text="{i18n>shortageQuantity}" />
+                        <Text id="txtShortageQty" text="{Femng} {Gmein}" />
 
-                    <!-- TAB 2: Goods Movement Balance -->
-                    <IconTabFilter id="tabGm" text="{i18n>goodsMovements}" icon="sap-icon://inventory" key="gm">
-                        <Table id="gmBalanceTable"
-                            items="{GoodsMovementBalanceSet}"
-                            noDataText="{i18n>noProductionOrders}"
-                            class="ppSubTable">
-                            <columns>
-                                <Column id="colGmMaterial"><Text id="colGmMaterialTxt" text="{i18n>material}" /></Column>
-                                <Column id="colGmMatDesc"><Text id="colGmMatDescTxt" text="{i18n>description}" /></Column>
-                                <Column id="colGmMvtType"><Text id="colGmMvtTypeTxt" text="{i18n>mvtType}" /></Column>
-                                <Column id="colGmMvtInd"><Text id="colGmMvtIndTxt" text="{i18n>mvtIndicator}" /></Column>
-                                <Column id="colGmSLoc"><Text id="colGmSLocTxt" text="{i18n>storageLocation}" /></Column>
-                                <Column id="colGmBatch"><Text id="colGmBatchTxt" text="{i18n>batch}" /></Column>
-                                <Column id="colGmQtyPos" hAlign="End"><Text id="colGmQtyPosTxt" text="{i18n>qtyPositive}" /></Column>
-                                <Column id="colGmQtyNeg" hAlign="End"><Text id="colGmQtyNegTxt" text="{i18n>qtyNegative}" /></Column>
-                                <Column id="colGmQtyNet" hAlign="End"><Text id="colGmQtyNetTxt" text="{i18n>qtyNet}" /></Column>
-                                <Column id="colGmLastPost"><Text id="colGmLastPostTxt" text="{i18n>lastPostingDate}" /></Column>
-                                <Column id="colGmLastDoc"><Text id="colGmLastDocTxt" text="{i18n>lastDocNo}" /></Column>
-                            </columns>
-                            <items>
-                                <ColumnListItem id="gmListItem">
-                                    <cells>
-                                        <Text id="gmCellMatnr" text="{Matnr}" />
-                                        <Text id="gmCellMaktx" text="{Maktx}" />
-                                        <Text id="gmCellBwart" text="{Bwart}" />
-                                        <Text id="gmCellShkzg" text="{Shkzg}" />
-                                        <Text id="gmCellLgort" text="{Lgort}" />
-                                        <Text id="gmCellCharg" text="{Charg}" />
-                                        <ObjectNumber id="gmCellMengePos" number="{MengePos}" unit="{Meins}" />
-                                        <ObjectNumber id="gmCellMengeNeg" number="{MengeNeg}" unit="{Meins}" />
-                                        <ObjectNumber id="gmCellMengeNet" number="{MengeNet}" unit="{Meins}" />
-                                        <Text id="gmCellBudatLast" text="{ path: 'BudatLast', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
-                                        <Text id="gmCellMblnrLast" text="{MblnrLast}" />
-                                    </cells>
-                                </ColumnListItem>
-                            </items>
-                        </Table>
-                    </IconTabFilter>
-                    <!-- TAB 3: Confirmation Summary -->
-                    <IconTabFilter id="tabConf" text="{i18n>confirmations}" icon="sap-icon://approvals" key="conf">
-                        <Table id="confSummaryTable"
-                            items="{ConfirmationSummarySet}"
-                            noDataText="{i18n>noProductionOrders}"
-                            class="ppSubTable">
-                            <columns>
-                                <Column id="colConfActivity"><Text id="colConfActivityTxt" text="{i18n>activity}" /></Column>
-                                <Column id="colConfOpText"><Text id="colConfOpTextTxt" text="{i18n>opShortText}" /></Column>
-                                <Column id="colConfWc"><Text id="colConfWcTxt" text="{i18n>workCenter}" /></Column>
-                                <Column id="colConfNo"><Text id="colConfNoTxt" text="{i18n>confirmationNo}" /></Column>
-                                <Column id="colConfYield" hAlign="End"><Text id="colConfYieldTxt" text="{i18n>yield}" /></Column>
-                                <Column id="colConfScrap" hAlign="End"><Text id="colConfScrapTxt" text="{i18n>scrap}" /></Column>
-                                <Column id="colConfWithdrawal" hAlign="End"><Text id="colConfWithdrawalTxt" text="{i18n>withdrawalQty}" /></Column>
-                                <Column id="colConfActQty" hAlign="End"><Text id="colConfActQtyTxt" text="{i18n>activityQty}" /></Column>
-                                <Column id="colConfPostDate"><Text id="colConfPostDateTxt" text="{i18n>postingDate}" /></Column>
-                                <Column id="colConfReversed"><Text id="colConfReversedTxt" text="{i18n>docReversed}" /></Column>
-                            </columns>
-                            <items>
-                                <ColumnListItem id="confListItem">
-                                    <cells>
-                                        <Text id="confCellVornr" text="{Vornr}" />
-                                        <Text id="confCellLtxa1" text="{Ltxa1}" />
-                                        <Text id="confCellArbpl" text="{Arbpl}" />
-                                        <Text id="confCellRueck" text="{Rueck}" />
-                                        <ObjectNumber id="confCellGmnga" number="{Gmnga}" unit="{Gmein}" />
-                                        <ObjectNumber id="confCellXmnga" number="{Xmnga}" unit="{Gmein}" />
-                                        <ObjectNumber id="confCellEnmng" number="{Enmng}" unit="{Gmein}" />
-                                        <ObjectNumber id="confCellIsm01" number="{Ism01}" unit="{Ile01}" />
-                                        <Text id="confCellBudat" text="{ path: 'Budat', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
-                                        <core:Icon id="confCellReversedIcon" src="{= ${IsReversed} ? 'sap-icon://sys-cancel' : 'sap-icon://accept' }"
-                                            class="{= ${IsReversed} ? 'warningIconError' : 'statusIconActive' }" />
-                                    </cells>
-                                </ColumnListItem>
-                            </items>
-                        </Table>
-                    </IconTabFilter>
-                </items>
-            </IconTabBar>
+                        <core:Title id="titleAdditional" text="{i18n>additionalInfo}" />
+                        <Label id="lblStatSystem" text="{i18n>statSystem}" />
+                        <Text id="txtStatSystem" text="{StatSystem}" />
+                        <Label id="lblStatUser" text="{i18n>statUser}" />
+                        <Text id="txtStatUser" text="{StatUser}" />
+                    </form:SimpleForm>
+                </content>
+            </Panel>
+
+            <!-- SECTION 2: Goods Movement Balance -->
+            <Panel id="panelGM" expandable="true" expanded="true" class="sapUiSmallMarginTop">
+                <headerToolbar>
+                    <Toolbar id="toolbarGM">
+                        <core:Icon id="iconGM" src="sap-icon://inventory" class="sapUiSmallMarginEnd" />
+                        <Title id="titlePanelGM" text="{i18n>goodsMovements}" level="H4" />
+                    </Toolbar>
+                </headerToolbar>
+                <content>
+                    <Table id="gmBalanceTable"
+                        items="{GoodsMovementBalanceSet}"
+                        noDataText="{i18n>noProductionOrders}"
+                        class="ppSubTable">
+                        <columns>
+                            <Column id="colGmMaterial"><Text id="colGmMaterialTxt" text="{i18n>material}" /></Column>
+                            <Column id="colGmMatDesc"><Text id="colGmMatDescTxt" text="{i18n>description}" /></Column>
+                            <Column id="colGmMvtType"><Text id="colGmMvtTypeTxt" text="{i18n>mvtType}" /></Column>
+                            <Column id="colGmCategory"><Text id="colGmCategoryTxt" text="{i18n>gmCategory}" /></Column>
+                            <Column id="colGmSLoc"><Text id="colGmSLocTxt" text="{i18n>storageLocation}" /></Column>
+                            <Column id="colGmBatch"><Text id="colGmBatchTxt" text="{i18n>batch}" /></Column>
+                            <Column id="colGmQtyPos" hAlign="End"><Text id="colGmQtyPosTxt" text="{i18n>qtyPositive}" /></Column>
+                            <Column id="colGmQtyNeg" hAlign="End"><Text id="colGmQtyNegTxt" text="{i18n>qtyNegative}" /></Column>
+                            <Column id="colGmQtyNet" hAlign="End"><Text id="colGmQtyNetTxt" text="{i18n>qtyNet}" /></Column>
+                            <Column id="colGmLastPost"><Text id="colGmLastPostTxt" text="{i18n>lastPostingDate}" /></Column>
+                            <Column id="colGmLastDoc"><Text id="colGmLastDocTxt" text="{i18n>lastDocNo}" /></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id="gmListItem">
+                                <cells>
+                                    <Text id="gmCellMatnr" text="{Matnr}" />
+                                    <Text id="gmCellMaktx" text="{Maktx}" />
+                                    <Text id="gmCellBwart" text="{Bwart}" />
+                                    <Text id="gmCellCategory" text="{GmCategory}" />
+                                    <Text id="gmCellLgort" text="{Lgort}" />
+                                    <Text id="gmCellCharg" text="{Charg}" />
+                                    <ObjectNumber id="gmCellMengePos" number="{MengePos}" unit="{Meins}" />
+                                    <ObjectNumber id="gmCellMengeNeg" number="{MengeNeg}" unit="{Meins}" />
+                                    <ObjectNumber id="gmCellMengeNet" number="{MengeNet}" unit="{Meins}" />
+                                    <Text id="gmCellBudatLast" text="{ path: 'BudatLast', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
+                                    <Text id="gmCellMblnrLast" text="{MblnrLast}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+            </Panel>
+
+            <!-- SECTION 3: Confirmation Summary -->
+            <Panel id="panelConf" expandable="true" expanded="true" class="sapUiSmallMarginTop sapUiSmallMarginBottom">
+                <headerToolbar>
+                    <Toolbar id="toolbarConf">
+                        <core:Icon id="iconConf" src="sap-icon://approvals" class="sapUiSmallMarginEnd" />
+                        <Title id="titlePanelConf" text="{i18n>confirmations}" level="H4" />
+                    </Toolbar>
+                </headerToolbar>
+                <content>
+                    <Table id="confSummaryTable"
+                        items="{ConfirmationSummarySet}"
+                        noDataText="{i18n>noProductionOrders}"
+                        class="ppSubTable">
+                        <columns>
+                            <Column id="colConfActivity"><Text id="colConfActivityTxt" text="{i18n>activity}" /></Column>
+                            <Column id="colConfOpText"><Text id="colConfOpTextTxt" text="{i18n>opShortText}" /></Column>
+                            <Column id="colConfWc"><Text id="colConfWcTxt" text="{i18n>workCenter}" /></Column>
+                            <Column id="colConfNo"><Text id="colConfNoTxt" text="{i18n>confirmationNo}" /></Column>
+                            <Column id="colConfYield" hAlign="End"><Text id="colConfYieldTxt" text="{i18n>yield}" /></Column>
+                            <Column id="colConfScrap" hAlign="End"><Text id="colConfScrapTxt" text="{i18n>scrap}" /></Column>
+                            <Column id="colConfWithdrawal" hAlign="End"><Text id="colConfWithdrawalTxt" text="{i18n>withdrawalQty}" /></Column>
+                            <Column id="colConfActQty" hAlign="End"><Text id="colConfActQtyTxt" text="{i18n>activityQty}" /></Column>
+                            <Column id="colConfPostDate"><Text id="colConfPostDateTxt" text="{i18n>postingDate}" /></Column>
+                            <Column id="colConfReversed"><Text id="colConfReversedTxt" text="{i18n>docReversed}" /></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id="confListItem">
+                                <cells>
+                                    <Text id="confCellVornr" text="{Vornr}" />
+                                    <Text id="confCellLtxa1" text="{Ltxa1}" />
+                                    <Text id="confCellArbpl" text="{Arbpl}" />
+                                    <Text id="confCellRueck" text="{Rueck}" />
+                                    <ObjectNumber id="confCellGmnga" number="{Gmnga}" unit="{Gmein}" />
+                                    <ObjectNumber id="confCellXmnga" number="{Xmnga}" unit="{Gmein}" />
+                                    <ObjectNumber id="confCellEnmng" number="{Enmng}" unit="{Gmein}" />
+                                    <ObjectNumber id="confCellIsm01" number="{Ism01}" unit="{Ile01}" />
+                                    <Text id="confCellBudat" text="{ path: 'Budat', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
+                                    <core:Icon id="confCellReversedIcon" src="{= ${IsReversed} ? 'sap-icon://sys-cancel' : 'sap-icon://accept' }"
+                                        class="{= ${IsReversed} ? 'warningIconError' : 'statusIconActive' }" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+            </Panel>
         </content>
         <footer>
             <Toolbar id="detailFooterToolbar">
