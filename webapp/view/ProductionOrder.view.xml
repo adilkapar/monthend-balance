@@ -36,37 +36,21 @@
                         labelSpanL="12"
                         labelSpanXL="12">
                         <Label id="lblFilterAufnr" text="{i18n>order}" />
-                        <Input id="filterAufnr" placeholder="{i18n>order}" />
+                        <Input id="filterAufnr" placeholder="{i18n>order}" showValueHelp="true" valueHelpRequest=".onValueHelp" />
                         <Label id="lblFilterAuart" text="{i18n>orderType}" />
-                        <Input id="filterAuart" placeholder="{i18n>orderType}" />
+                        <Input id="filterAuart" placeholder="{i18n>orderType}" showValueHelp="true" valueHelpRequest=".onValueHelp" />
                         <Label id="lblFilterWerks" text="{i18n>plant}" />
-                        <Input id="filterWerks" placeholder="{i18n>plant}" />
+                        <Input id="filterWerks" placeholder="{i18n>plant}" showValueHelp="true" valueHelpRequest=".onValueHelp" />
                         <Label id="lblFilterMatnr" text="{i18n>material}" />
-                        <Input id="filterMatnr" placeholder="{i18n>material}" />
+                        <Input id="filterMatnr" placeholder="{i18n>material}" showValueHelp="true" valueHelpRequest=".onValueHelp" />
                         <Label id="lblFilterMatkl" text="{i18n>materialGroup}" />
-                        <Input id="filterMatkl" placeholder="{i18n>materialGroup}" />
+                        <Input id="filterMatkl" placeholder="{i18n>materialGroup}" showValueHelp="true" valueHelpRequest=".onValueHelp" />
                         <Label id="lblFilterMtart" text="{i18n>materialType}" />
-                        <Input id="filterMtart" placeholder="{i18n>materialType}" />
-                        <Label id="lblFilterDispo" text="{i18n>mrpController}" />
-                        <Input id="filterDispo" placeholder="{i18n>mrpController}" />
-                        <Label id="lblFilterFevor" text="{i18n>supervisor}" />
-                        <Input id="filterFevor" placeholder="{i18n>supervisor}" />
+                        <Input id="filterMtart" placeholder="{i18n>materialType}" showValueHelp="true" valueHelpRequest=".onValueHelp" />
                         <Label id="lblFilterArbpl" text="{i18n>workCenter}" />
-                        <Input id="filterArbpl" placeholder="{i18n>workCenter}" />
+                        <Input id="filterArbpl" placeholder="{i18n>workCenter}" showValueHelp="true" valueHelpRequest=".onValueHelp" />
                         <Label id="lblFilterLgort" text="{i18n>storageLocation}" />
-                        <Input id="filterLgort" placeholder="{i18n>storageLocation}" />
-                        <Label id="lblFilterCharg" text="{i18n>batch}" />
-                        <Input id="filterCharg" placeholder="{i18n>batch}" />
-                        <Label id="lblFilterPsPspPnr" text="{i18n>wbsElement}" />
-                        <Input id="filterPsPspPnr" placeholder="{i18n>wbsElement}" />
-                        <Label id="lblFilterGstrp" text="{i18n>basicStartDate}" />
-                        <DateRangeSelection id="filterGstrp" />
-                        <Label id="lblFilterGltrp" text="{i18n>basicFinishDate}" />
-                        <DateRangeSelection id="filterGltrp" />
-                        <Label id="lblFilterGstrs" text="{i18n>scheduledStart}" />
-                        <DateRangeSelection id="filterGstrs" />
-                        <Label id="lblFilterGltrs" text="{i18n>scheduledFinish}" />
-                        <DateRangeSelection id="filterGltrs" />
+                        <Input id="filterLgort" placeholder="{i18n>storageLocation}" showValueHelp="true" valueHelpRequest=".onValueHelp" />
                         <Label id="lblFilterIsTeco" text="{i18n>techComplete}" />
                         <Select id="filterIsTeco">
                             <core:Item id="itemTecoAll" key="" text="" />

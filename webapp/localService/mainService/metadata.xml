@@ -99,6 +99,15 @@
                 <Property Name="MsgV1" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="MsgV2" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Message Variable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
+            <EntityType Name="ValueHelp" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FieldName"/>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="FieldName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Field Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Key" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Text" Type="Edm.String" MaxLength="80" sap:unicode="false" sap:label="Text" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
             <Association Name="ProductionOrderToConfSummary" sap:content-version="1" sap:label="ProductionOrderToConfSummarySet">
                 <End Type="ZGW_PP_PROD_ORD_SRV_SRV.ProductionOrder" Multiplicity="1" Role="FromRole_ProductionOrderToConfSummary"/>
                 <End Type="ZGW_PP_PROD_ORD_SRV_SRV.ConfirmationSummary" Multiplicity="*" Role="ToRole_ProductionOrderToConfSummary"/>
@@ -128,6 +137,7 @@
                 <EntitySet Name="GoodsMovementBalanceSet" EntityType="ZGW_PP_PROD_ORD_SRV_SRV.GoodsMovementBalance" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="ConfirmationSummarySet" EntityType="ZGW_PP_PROD_ORD_SRV_SRV.ConfirmationSummary" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="TecoResultSet" EntityType="ZGW_PP_PROD_ORD_SRV_SRV.TecoResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ValueHelpSet" EntityType="ZGW_PP_PROD_ORD_SRV_SRV.ValueHelp" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <AssociationSet Name="ProductionOrderToConfSummarySet" Association="ZGW_PP_PROD_ORD_SRV_SRV.ProductionOrderToConfSummary" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="ProductionOrderSet" Role="FromRole_ProductionOrderToConfSummary"/>
                     <End EntitySet="ConfirmationSummarySet" Role="ToRole_ProductionOrderToConfSummary"/>
@@ -136,6 +146,10 @@
                     <End EntitySet="ProductionOrderSet" Role="FromRole_ProductionOrderToGMBalance"/>
                     <End EntitySet="GoodsMovementBalanceSet" Role="ToRole_ProductionOrderToGMBalance"/>
                 </AssociationSet>
+                <FunctionImport Name="GetValueHelp" ReturnType="Collection(ZGW_PP_PROD_ORD_SRV_SRV.ValueHelp)" EntitySet="ValueHelpSet" m:HttpMethod="GET" sap:label="Get Value Help">
+                    <Parameter Name="FieldName" Type="Edm.String" Mode="In" MaxLength="30"/>
+                    <Parameter Name="Search" Type="Edm.String" Mode="In" MaxLength="100" Nullable="true"/>
+                </FunctionImport>
                 <FunctionImport Name="SetTechnicalComplete" ReturnType="ZGW_PP_PROD_ORD_SRV_SRV.TecoResult" EntitySet="TecoResultSet" m:HttpMethod="POST" sap:label="Set Technical Complete">
                     <Parameter Name="AufnrList" Type="Edm.String" Mode="In" MaxLength="2000"/>
                 </FunctionImport>
