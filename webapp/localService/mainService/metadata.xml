@@ -17,6 +17,8 @@
                 <Property Name="Gamng" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Target Quantity" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Wemng" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Target Quantity" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Femng" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Target Quantity" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="GiQtyTotal" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="GI Quantity" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="GrGiBalance" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="GR - GI" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Gmein" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:semantics="unit-of-measure"/>
                 <Property Name="Gstrp" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Gltrp" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false"/>

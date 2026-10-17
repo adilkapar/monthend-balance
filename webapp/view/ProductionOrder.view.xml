@@ -146,20 +146,20 @@
                     <Column id="colGrQty" hAlign="End" width="8rem" minScreenWidth="Tablet" demandPopin="true">
                         <Text id="colGrQtyTxt" text="{i18n>grQuantity}" />
                     </Column>
-                    <Column id="colShortageQty" hAlign="End" width="8rem" minScreenWidth="Desktop" demandPopin="true">
-                        <Text id="colShortageQtyTxt" text="{i18n>shortageQuantity}" />
+                    <Column id="colGiQty" hAlign="End" width="8rem" minScreenWidth="Tablet" demandPopin="true">
+                        <Text id="colGiQtyTxt" text="{i18n>giQuantity}" />
+                    </Column>
+                    <Column id="colGrGiBalance" hAlign="End" width="8rem" minScreenWidth="Tablet" demandPopin="true">
+                        <Text id="colGrGiBalanceTxt" text="{i18n>grGiBalance}" />
+                    </Column>
+                    <Column id="colOpenGrQty" hAlign="End" width="8rem" minScreenWidth="Desktop" demandPopin="true">
+                        <Text id="colOpenGrQtyTxt" text="{i18n>openGrQuantity}" />
                     </Column>
                     <Column id="colBasicStart" width="7rem" minScreenWidth="Desktop" demandPopin="true">
                         <Text id="colBasicStartTxt" text="{i18n>basicStartDate}" />
                     </Column>
                     <Column id="colBasicFinish" width="7rem" minScreenWidth="Desktop" demandPopin="true">
                         <Text id="colBasicFinishTxt" text="{i18n>basicFinishDate}" />
-                    </Column>
-                    <Column id="colMrpCtrl" width="5rem" minScreenWidth="Desktop" demandPopin="true">
-                        <Text id="colMrpCtrlTxt" text="{i18n>mrpController}" />
-                    </Column>
-                    <Column id="colSupervisor" width="5rem" minScreenWidth="Desktop" demandPopin="true">
-                        <Text id="colSupervisorTxt" text="{i18n>supervisor}" />
                     </Column>
                     <Column id="colWorkCenter" width="6rem" minScreenWidth="Desktop" demandPopin="true">
                         <Text id="colWorkCenterTxt" text="{i18n>workCenter}" />
@@ -181,6 +181,8 @@
                             <Text id="cellMaktx" text="{Maktx}" />
                             <ObjectNumber id="cellGamng" number="{Gamng}" unit="{Gmein}" />
                             <ObjectNumber id="cellWemng" number="{Wemng}" unit="{Gmein}" />
+                            <ObjectNumber id="cellGiQty" number="{GiQtyTotal}" unit="{Gmein}" />
+                            <ObjectNumber id="cellGrGiBalance" number="{GrGiBalance}" unit="{Gmein}" />
                             <ObjectNumber id="cellFemng" number="{Femng}" unit="{Gmein}" />
                             <Text id="cellGstrp" text="{
                                 path: 'Gstrp',
@@ -192,8 +194,6 @@
                                 type: 'sap.ui.model.type.Date',
                                 formatOptions: { style: 'medium' }
                             }" />
-                            <Text id="cellDispo" text="{Dispo}" />
-                            <Text id="cellFevor" text="{Fevor}" />
                             <Text id="cellArbpl" text="{Arbpl}" />
                             <!-- Status Icons -->
                             <HBox id="statusIconsBox" class="statusCell">
